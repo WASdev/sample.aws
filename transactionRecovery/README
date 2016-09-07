@@ -1,0 +1,20 @@
+This sample was created to help demonstrate how to use transactions in AWS (Amazon Web Services) and how to enable tra$
+This uses WebSphere Liberty, Derby DB, a sample application and Ubuntu 14.04 running on AWS.
+
+A built release of this sample code is available and is being hosted in this repo under the releases tab. You can also clone this repo and build the application with maven using the following command <mvn clean install> from the transactionRecovery directory.
+
+More detailed Information regaring how to use this sample can be found at WASDev.net. A direct link to the article will be available from here in the next couple of days.
+
+Prereq:
+1. Get an AWS account.
+2. Download WebSphere Liberty.
+3. Setup an EC2 instance.
+4. Get ssh access to the newly created instance.
+5. Install Git.
+6. Download Derby.
+
+To begin:
+1. Transfer your built application, the server.xml located in this repo, Liberty and the Derby installer to your EC2 instance.
+2. Install Liberty and Derby.
+3. Deploy your application into the dropins folder and deploy your application.
+4. Check the logs for evidence of a transaction being started and finished.

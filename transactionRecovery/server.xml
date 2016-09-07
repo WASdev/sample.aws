@@ -1,0 +1,43 @@
+<server description="Liberty">
+
+  <featureManager>
+    <feature>localConnector-1.0</feature>
+    <feature>servlet-3.1</feature>
+    <feature>jsonp-1.0</feature>
+    <feature>jdbc-4.1</feature>
+    <feature>jndi-1.0</feature>
+    <feature>cdi-1.2</feature>
+    <feature>xaflow-1.0</feature>
+  </featureManager>
+  <transaction
+    recoverOnStartup="true"
+    waitForRecovery="false"
+    heuristicRetryInterval="10"/>
+
+    <logging traceSpecification="Transaction=all:Naming=all:RRA=all:logservice=all=enabled:*=info=enabled"
+      maxFileSize="50"
+      maxFiles="20" />
+
+      <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
+      
+      <jdbcDriver id="DerbyEmbedded" libraryRef="DerbyLib"/>
+      <library id="DerbyLib">
+        <file name="${shared.resource.dir}/derby.jar"/>
+      </library>
+
+      <dataSource id="ds1" jndiName="jdbc/myDataSource" jdbcDriverRef="DerbyEmbedded" type="javax.sql.XADataSource">
+        <properties
+          databaseName="${shared.resource.dir}/data/exampleDB"
+          createDatabase="create"
+          />
+        </dataSource>
+
+        <dataSource id="ds2" jndiName="jdbc/secondDataSource" jdbcDriverRef="DerbyEmbedded" type="javax.sql.XADataSource">
+          <properties
+            databaseName="${shared.resource.dir}/data/exampleDB2"
+            createDatabase="create"
+            />
+          </dataSource>
+
+
+        </server>
