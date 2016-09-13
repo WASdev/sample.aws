@@ -307,7 +307,7 @@ public class XAFlowServlet extends HttpServlet {
         }
 
         final PrintWriter out = response.getWriter();
-        out.println("XAFLOWSERVLET: SETUP COMPLETED SUCCESSFULLY");
+        out.println("XAFLOWSERVLET: TRANSACTION COMPLETED SUCCESSFULLY");
         out.close();
     }
 
@@ -326,7 +326,7 @@ public class XAFlowServlet extends HttpServlet {
         String test = request.getParameter("test");
         PrintWriter out = response.getWriter();
         System.out.println("Starting test " + test + "<br>");
-        out.println("Starting test " + test + "<br>");
+        out.println("Starting test " + test +);
         try {
             getClass().getMethod(test, HttpServletRequest.class, HttpServletResponse.class).invoke(this, request, response);
             out.println(test + " " + SUCCESS_MESSAGE);
