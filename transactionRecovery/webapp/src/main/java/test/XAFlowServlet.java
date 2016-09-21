@@ -132,7 +132,8 @@ public class XAFlowServlet extends HttpServlet {
     public void setupRecXAFlow001(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         UserTransaction ut = null;
-
+        final PrintWriter out = response.getWriter();
+        out.println("Transaction started");
         try
         {
             // Do the lookups on the DS
@@ -284,7 +285,7 @@ public class XAFlowServlet extends HttpServlet {
             ps2.close();
 
             System.out.println("XAFLOWSERVLET: SECOND DERBY UPDATE has finished");
-
+            out.println("Preparing to commit transaction");
         } catch (Exception e)
         {
             System.out.println("XAFLOWSERVLET: Exception thrown when initializing: " + e);
@@ -305,8 +306,6 @@ public class XAFlowServlet extends HttpServlet {
                 }
             }
         }
-
-        final PrintWriter out = response.getWriter();
         out.println("XAFLOWSERVLET: TRANSACTION COMPLETED SUCCESSFULLY");
         out.close();
     }
