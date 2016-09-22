@@ -43,8 +43,7 @@ public class XAFlowServlet extends HttpServlet {
     public XAFlowServlet() {
         // TODO Auto-generated constructor stub
         System.out.println("XAFLOWSERVLET: Default ctor");
-    }
-
+      }
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      * This method is used to setup a connection to the DB.
@@ -245,7 +244,7 @@ public class XAFlowServlet extends HttpServlet {
         String test = request.getParameter("test");
         PrintWriter out = response.getWriter();
         System.out.println("Starting test " + test + "<br>");
-        out.println("Starting test " + test +);
+        out.println("Starting test " + test);
         try {
             getClass().getMethod(test, HttpServletRequest.class, HttpServletResponse.class).invoke(this, request, response);
             out.println(test + " " + SUCCESS_MESSAGE);
