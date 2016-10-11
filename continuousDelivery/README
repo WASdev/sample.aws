@@ -1,0 +1,35 @@
+This sample will be used to help demonstrate integration between GitHub, 
+IBM WebSphere Application Server, Docker and Amazon AWS. The project builds
+a sample 'hello world' .war file, and packages it into a .zip file along with
+a Dockerfile. 
+
+This .zip file can then be deployed to Amazon Elasticbeanstalk. 
+
+Travis integration is provided via .travis.yml. 
+
+So: 
+Register for Amazon AWS. 
+Set up aws command line. 
+git clone this project
+Install a Java compiler - 'dnf install java-1.?.0-openjdk-devel' on Fedora 
+mvn clean install
+
+This builds target/upload-1.0.zip
+
+This zip file will be deployed as a Docker container to Amazon Elastic
+Beanstalk by Travis. It's also possible to deploy it manually:
+
+sudo dnf install jq
+
+As per https://dzone.com/articles/how-deploy-docker-application 
+copy 
+https://github.com/mvanholsteijn/sample_nodejs_cf/blob/master/deploy-to-aws.sh
+
+chmod +x ./deploy-to-aws.sh
+./deploy_to_aws.sh app-name target/upload-1.0.zip
+
+This will take several minutes. On completion it will print the public URL that
+you can access - go to this URL to see the Liberty landing page, or /test
+to see the output from src/main/java/test/TestServlet.java
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app id="WebApp_ID">
+  <display-name>transaction</display-name>
+  <description>Servlets designed to test transactions.</description>
+
+  <!-- SERVLET DEFINITIONS -->
+  <servlet id="XAFlow">
+    <servlet-name>XAFlow Servlet</servlet-name>
+    <display-name>XAFlow Servlet</display-name>
+    <description>Tests transactions</description>
+    <servlet-class>web.XAFlowServlet</servlet-class>
+    <load-on-startup></load-on-startup>
+  </servlet>
+
+  <!-- SERVLET MAPPINGS -->        
+  <servlet-mapping id="ServletMapping_XAFlow">
+    <servlet-name>XAFlow Servlet</servlet-name>
+    <url-pattern>/xaflow/*</url-pattern>
+  </servlet-mapping>
+
+    <!-- RESOURCE REFERENCES -->
+  <resource-ref>
+    <res-ref-name>jdbc/myDataSource</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Application</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
+  
+  <resource-ref>
+    <res-ref-name>jdbc/secondDataSource</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Application</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>  
+</web-app>
